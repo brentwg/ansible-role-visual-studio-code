@@ -3,21 +3,18 @@
   copy:
     src: "files/vscode.list"
     dest: "/etc/apt/sources.list.d/vscode.list"
-    owner: root
-    group: root
-    mode: 0644
   register: coderepofile
 
 - name: Import the repo key to the RPM database (Debian)
   shell: |
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    curl {{ code_repo_key_url }} | gpg --dearmor > microsoft.gpg
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
   args:
     executable: /bin/bash
   when: coderepofile.changed
 
-- name: Update apt cache (Debian)
+- name: Install Visual Studio Code (Debian)
   apt: 
+  name: code
     update_cache: yes 
-    cache_valid_time: 600
 

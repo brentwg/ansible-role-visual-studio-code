@@ -5,8 +5,3 @@
 - import_tasks: setup-Debian.yml
   when: ansible_os_family == 'Debian'
 
-- name: Install Visual Studio Code
-  package:
-    name: "{{ code_package_name }}"
-    state: present
-
