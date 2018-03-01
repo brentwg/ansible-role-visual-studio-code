@@ -17,4 +17,5 @@
   apt: 
     name: code
     update_cache: yes 
+    state: present
 
