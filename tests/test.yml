@@ -2,15 +2,17 @@
 - hosts: all
 
   pre_tasks:
-    - name: "FIX: Ubuntu 16.04 LTS doesn't come with certain modules, required by ansible"
-      raw: apt-get install python-minimal aptitude -y
-      when: ansible_os_family == 'Debian'
-
     - name: Update apt cache.
       apt: update_cache=yes cache_valid_time=600
       when: ansible_os_family == 'Debian'
 
-    - name: Install test dependencies.
+    - name: 'install python2'
+      raw: sudo apt-get -y install python-simplejson
+
+    - name: 'install aptitude'
+      raw: sudo apt-get -y install aptitude
+
+    - name: Install other test dependencies.
       package: 
         name: curl 
         state: present
