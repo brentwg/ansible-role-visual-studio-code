@@ -15,6 +15,6 @@
 
 - name: Install Visual Studio Code (Debian)
   apt: 
-  name: code
+    name: code
     update_cache: yes 
 
