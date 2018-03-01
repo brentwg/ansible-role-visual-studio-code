@@ -12,6 +12,9 @@
     - name: 'install aptitude'
       raw: sudo apt-get -y install aptitude
 
+    - name: 'install apt-transport-https'
+      raw: sudo apt-get -y install apt-transport-https
+
     - name: Install other test dependencies.
       package: 
         name: curl 
