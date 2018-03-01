@@ -13,6 +13,8 @@
       with_items:
       - aptitude
       - python-minimal
+      - python-apt
+      - python3-apt
       when: ansible_os_family == 'Debian'
 
     - name: Install test dependencies.
