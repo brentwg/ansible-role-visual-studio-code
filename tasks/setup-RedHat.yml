@@ -1,0 +1,28 @@
+---
+- name: Copy the Visual Studio Code REPO file (RHEL)
+  copy:
+    src: "files/vscode.repo"
+    dest: "/etc/yum.repos.d/vscode.repo"
+    owner: root
+    group: root
+    mode: 0644
+  register: coderepofile
+
+- name: Update the package cache (Fedora)
+  shell: |
+    dnf check-update
+  args:
+    executable: /bin/bash
+  when: 
+    - coderepofile.changed
+    - ansible_distribution == 'Fedora'
+
+- name: Update the package cache (RHEL)
+  shell: |
+    yum check-update
+  args:
+    executable: /bin/bash
+  when:
+    - coderepofile.changed
+    - ansible_distribution != 'Fedora'
+
