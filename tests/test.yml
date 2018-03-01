@@ -2,19 +2,12 @@
 - hosts: all
 
   pre_tasks:
-    - name: Update apt cache.
-      apt: update_cache=yes cache_valid_time=600
+    - name: "FIX: Ubuntu 16.04 LTS doesn't come with certain modules, required by ansible"
+      raw: apt-get install python-minimal aptitude -y
       when: ansible_os_family == 'Debian'
 
-    - name: Fix apt-get bug (1604)
-      apt:
-        name: "{{ item }}"
-        state: present
-      with_items:
-      - aptitude
-      - python-minimal
-      - python-apt
-      - python3-apt
+    - name: Update apt cache.
+      apt: update_cache=yes cache_valid_time=600
       when: ansible_os_family == 'Debian'
 
     - name: Install test dependencies.
