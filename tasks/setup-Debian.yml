@@ -9,6 +9,7 @@
   shell: |
     curl {{ code_repo_key_url }} | gpg --dearmor > microsoft.gpg
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+    sudo apt-get update
   args:
     executable: /bin/bash
   when: coderepofile.changed
@@ -16,6 +17,4 @@
 - name: Install Visual Studio Code (Debian)
   apt: 
     name: code
-    update_cache: yes 
     state: present
-
