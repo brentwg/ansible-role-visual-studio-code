@@ -16,6 +16,5 @@ script:
   # Run tests
   - ${PWD}/tests/test.sh
 
-  # Check application version
-  - docker exec --tty ${container_id} env TERM=xterm code --version --user-data-dir
-
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
