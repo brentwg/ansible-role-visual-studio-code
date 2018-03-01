@@ -1,0 +1,21 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: brentwg
+  description: This role installs the Microsoft Visual Studio Code editor on Linux.
+  company: "None"
+  license: "None"
+  min_ansible_version: 2.4
+  platforms:
+  - name: Fedora
+    versions:
+    - 27
+  galaxy_tags:
+  - development
+  - editor
+  - microsoft
+  - visual
+  - studio
+  - code
+
