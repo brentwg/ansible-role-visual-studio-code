@@ -6,14 +6,14 @@
       apt: update_cache=yes cache_valid_time=600
       when: ansible_os_family == 'Debian'
 
-    - name: 'install python2'
-      raw: sudo apt-get -y install python-simplejson
-
-    - name: 'install aptitude'
-      raw: sudo apt-get -y install aptitude
-
-    - name: 'install apt-transport-https'
-      raw: sudo apt-get -y install apt-transport-https
+    - name: Fix broken apt module for Ubuntu 1604
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items:
+      - python-simplejson
+      - aptitude
+      - apt-transport-https
 
     - name: Install other test dependencies.
       package: 
@@ -22,4 +22,3 @@
 
   roles:
     - role_under_test
-
