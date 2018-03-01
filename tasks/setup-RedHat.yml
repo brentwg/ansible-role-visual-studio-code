@@ -12,9 +12,3 @@
   rpm_key:
     key: "{{ code_repo_key_url }}"
     state: present
-
-- name: Install Visual Studio Code
-  package:
-    name: "{{ code_package_name }}"
-    state: present
-

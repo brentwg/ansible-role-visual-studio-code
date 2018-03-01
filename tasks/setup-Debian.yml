@@ -13,8 +13,3 @@
   args:
     executable: /bin/bash
   when: coderepofile.changed
-
-- name: Install Visual Studio Code (Debian)
-  apt: 
-    name: code
-    state: present
