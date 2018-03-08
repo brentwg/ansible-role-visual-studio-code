@@ -5,7 +5,7 @@
     dest: "/etc/apt/sources.list.d/vscode.list"
   register: coderepofile
 
-- name: Import the repo key to the RPM database (Debian)
+- name: Import the repo key and update APT cache (Debian)
   shell: |
     curl {{ code_repo_key_url }} | gpg --dearmor > microsoft.gpg
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
