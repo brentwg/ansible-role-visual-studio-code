@@ -1,0 +1,14 @@
+---
+- name: Import the APT repo key (Debian)
+  apt_key:
+    url: "{{ code_repo_key }}"
+
+- name: Create the APT repository (Debian)
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+    filename: vscode.list
+
+- name: Install the application package (Debian)
+  apt:
+    name: "{{ code_package_name }}"
+    update_cache: yes
