@@ -16,21 +16,5 @@
       - apt-transport-https
       when: ansible_os_family == 'Debian'
 
-    - name: Install other test dependencies (RedHat)
-      package: 
-        name: "{{ item }}" 
-        state: present
-      with_items:
-        - gtk2
-      when: ansible_os_family == 'RedHat'
-
-    - name: Install other test dependencies (Debian)
-      package: 
-        name: "{{ item }}" 
-        state: present
-      with_items:
-        - gtk2.0
-      when: ansible_os_family == 'Debian'
-    
   roles:
     - role_under_test
