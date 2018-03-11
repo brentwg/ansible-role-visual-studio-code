@@ -1,9 +1,9 @@
 ---
 code_package_name: "code"
 
-yum_repo_name: 
-yum_repo_description: 
-yum_repo_baseurl: 
+yum_repo_name: code
+yum_repo_description: Visual Studio Code
+yum_repo_baseurl: https://packages.microsoft.com/yumrepos/vscode
 
 code_repo_key: "https://packages.microsoft.com/keys/microsoft.asc"
 
