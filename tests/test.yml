@@ -2,7 +2,7 @@
 - hosts: all
 
   pre_tasks:
-    - name: Update apt cache.
+    - name: Update apt cache
       apt: update_cache=yes cache_valid_time=600
       when: ansible_os_family == 'Debian'
 
@@ -16,10 +16,21 @@
       - apt-transport-https
       when: ansible_os_family == 'Debian'
 
-    - name: Install other test dependencies.
+    - name: Install other test dependencies (RedHat)
       package: 
-        name: curl 
+        name: "{{ item }}" 
         state: present
+      with_items:
+        - gtk2
+      when: ansible_os_family == 'RedHat'
 
+    - name: Install other test dependencies (Debian)
+      package: 
+        name: "{{ item }}" 
+        state: present
+      with_items:
+        - gtk2.0
+      when: ansible_os_family == 'Debian'
+    
   roles:
     - role_under_test
