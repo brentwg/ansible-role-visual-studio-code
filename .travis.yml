@@ -18,9 +18,6 @@ script:
 
   # Run tests
   - ${PWD}/tests/test.sh
-  
-  # Test VS Code installation
-  - docker exec --tty $container_id env TERM=xterm hash code
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
