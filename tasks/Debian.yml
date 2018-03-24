@@ -6,7 +6,7 @@
 - name: Create the APT repository (Debian)
   apt_repository:
     repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
-    filename: vscode.list
+    filename: vscode
 
 - name: Install the application package (Debian)
   apt:
